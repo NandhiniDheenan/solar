@@ -1,0 +1,34 @@
+<html>
+<body style="background: linear-gradient(to bottom, #99ccff 0%, #ccffff 100%);">
+<%= stylesheet_link_tag 'application' %>
+<%= javascript_include_tag  "application" %>
+
+<div class="newdbheading1">
+License Key List
+</div>
+
+<div class="newdbdatapane">
+<table id="table_id" class="display nowrap"  border="2" cellpadding="5%" cellspacing="1" >
+<thead>
+<tr>
+<th>controllerID </th>
+<th>License Key </th>
+
+</tr>
+</thead>
+<% @license_key_details.each do |val| %>
+<tr>
+<td><%= "#{val['controller_id']}" %></td>
+<td ><%= "#{val['authorization_key']}" %></td>
+</tr>
+<% end %>
+</table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').dataTable();
+    });
+</script>
+</body>
+</html>

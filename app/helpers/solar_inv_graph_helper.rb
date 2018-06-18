@@ -1,0 +1,2 @@
+module SolarInvGraphHelper
+end

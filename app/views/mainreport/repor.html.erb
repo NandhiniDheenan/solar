@@ -1,0 +1,639 @@
+<html>
+<body style="background:linear-gradient(to bottom, #99ccff 0%, #ccffff 100%);">
+ <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag  "application" %>
+<h3 style="margin-left:20%;">Dashboard</h3>
+<div class="row">
+  <div class="column1"  >
+
+<b>PV Report</b>
+ <div class="pvdatapane1">
+<table id="table_id" class="table table-condensed table-striped table-hover" border="1" width="10%" >
+<thead>
+<tr>
+
+<th>Updated Date </th>
+<th>Updated Time </th>
+
+<th>PV Voltage</th>
+<th>PV Current </th>
+<th>Yesterday's KWH </th>
+<th>Today's KWH</th>
+<th>Total KWH</th>
+<th>Battery Voltage</th>
+<th>Battery Current</th>
+<th>PV Input Power </th>
+</tr>
+</thead>
+<% @pv_report_details.each do |val| %>
+<tr>
+<td ><%= "#{val['updated_date']}" %></td>
+<td><%= "#{val['updated_time'].strftime("%H:%M:%S")}" %></td>
+<td><%= "#{val['PV_voltage']}" %></td>
+<td><%= "#{val['PV_current']}" %></td>
+<td><%= "#{val['yesterdays_kwh']}" %></td>
+<td><%= "#{val['todays_kwh']}" %></td>
+<td><%= "#{val['total_kwh']}" %></td>
+<td><%= "#{val['batter_voltage']}" %></td>
+<td><%= "#{val['battery_current']}" %></td>
+<td><%= "#{val['PV_input_power']}" %></td>
+<!--<td><a href="/reports?ctrlr_id=<%= "#{val['ctrlrid']}" %>" class="w3-bar-item w3-button w3-padding"><i class="fa fa-table tblcheck"></i>  </a></td>-->
+</tr>
+<% end %>
+</table>
+</div>
+
+
+<script type="text/javascript">
+  
+        $('#table_id').DataTable(
+
+{
+	"sScrollY": ($(window).height() - 530),
+        "scrollX": true,
+	"scrollY": true,
+ 
+}
+
+);  
+</script>
+<script>
+$(document).ready(function(){
+$("#table_id").click(function(){
+    window.location = "/pv_report?";
+});
+});
+</script>
+  </div>
+
+
+
+<div class="column2">
+<b>Inverter Report</b>
+ <div class="invdatapane1">
+<table id="table_id1" class="display nowrap" border="1" width="10%" >
+<thead>
+<tr>
+
+<th>Updated Date </th>
+<th>Updated Time </th>
+<th>Battery Voltage</th>
+<th>Battery Current</th>
+<th>R_PHASE O/P Voltage</th>
+<th>Y_PHASE O/P Voltage</th>
+<th>B_PHASE O/P Voltage </th>
+<th>Inverter Current</th>
+<th>O/P Power</th>
+<th>O/P Frequency</th>
+<th>Today's Energy Exported</th>
+<th>Today's Energy Imported</th>
+<th>Total Energy Exported</th>
+<th>Total Energy Exported</th>
+
+</tr>
+</thead>
+<% @inverter_report_details.each do |val| %>
+<tr>
+<td ><%= "#{val['updated_date']}" %></td>
+<td><%= "#{val['updated_time'].strftime("%H:%M:%S")}" %></td>
+<td><%= "#{val['battery_voltage']}" %></td>
+<td><%= "#{val['battery_current']}" %></td>
+<td><%= "#{val['inv_output_vol_r_ph']}" %></td>
+<td><%= "#{val['inv_output_vol_y_ph']}" %></td>
+<td><%= "#{val['inv_output_vol_b_ph']}" %></td>
+<td><%= "#{val['inverter_current']}" %></td>
+<td><%= "#{val['output_power']}" %></td>
+<td><%= "#{val['inverter_output_frequency']}" %></td>
+<td><%= "#{val['todays_inv_output_eng_positive']}" %></td>
+<td><%= "#{val['todays_inv_output_eng_negative']}" %></td>
+<td><%= "#{val['total_inv_output_eng_positive']}" %></td>
+<td><%= "#{val['total_inv_output_eng_negative']}" %></td>
+
+<!--<td><a href="/reports?ctrlr_id=<%= "#{val['ctrlrid']}" %>" class="w3-bar-item w3-button w3-padding"><i class="fa fa-table tblcheck"></i>  </a></td>-->
+</tr>
+<% end %>
+</table>
+</div>
+
+<script type="text/javascript">
+  
+        $('#table_id1').DataTable(
+
+{
+	"sScrollY": ($(window).height() - 500),
+        "scrollX": true,
+	"scrollY": true,
+ 
+}
+
+);  
+</script>
+<script>
+$(document).ready(function(){
+$("#table_id1").click(function(){
+    window.location = "/inverter_report?";
+});
+});
+</script>
+  </div>
+
+
+
+  <div class="column3">
+    <div class="heading">
+<b style="margin-left:1%">Grid Energy</b>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;margin-left:15%;" id="myButton1d">1D</a></button>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton1w">1W</button>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton1m">1M</button>
+<!--<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton6m">6M</button>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton1y">1Y</button>-->
+</div>
+<div id="canvas-holder">
+<canvas id="myChart3"  width="200" height="180" ></canvas>
+</div>	
+<div class="sliderpane1">
+<div id="slider" ></div>
+</div>
+    
+  </div>
+<script>
+
+var curentpage=1;
+var graphtimear;
+var graphdate;
+
+var ctx ;
+var myChart3 ;
+$(function(){
+      
+     
+      drawgraph();
+      initializegraphdata();
+      
+      window.myChart3.update();
+      
+});
+function initializegraphdata()
+{
+      myChart3.config.data.datasets[0].data=total_energy_export.slice(curentpage,curentpage+100);
+      myChart3.config.data.labels=datearr.slice(curentpage,curentpage+100);
+      myChart3.config.data.datasets[1].data=total_energy_import.slice(curentpage,curentpage+100);
+         
+      window.myChart3.update();
+
+}
+function updategraph()
+{
+      
+      myChart3.config.data.datasets[0].data=total_energy_export.slice(curentpage,curentpage+100);
+      myChart3.config.data.labels=datearr.slice(curentpage,curentpage+100);
+      myChart3.config.data.datasets[1].data=total_energy_import.slice(curentpage,curentpage+100);
+         
+      window.myChart3.update();
+}
+
+var total_energy_export=<%= raw(@total_energy_export) %>;
+var timearr=<%= raw(@timearray) %>;
+var datearr=<%= raw(@datearray) %>;
+var total_energy_import=<%= raw(@total_energy_import) %>;
+
+
+
+
+function drawgraph(){
+       ctx = document.getElementById("myChart3").getContext('2d');
+       myChart3 = new Chart(ctx, {
+          type: 'line',
+          zoomType: 'x',
+
+          data: {
+                  labels: [], 
+                   datasets: [{
+                   label: 'Export',
+                   yAxisID: 'A',
+                   fill: false,
+                   backgroundColor: "rgba(75,192,192,0.4)",
+                   borderColor: "rgba(75,192,192,5)",
+                   data: [],
+                },
+                {
+                   label: 'Import',
+                   yAxisID: 'A',
+                   fill: false,
+                   lineTension: 0.3,
+                   backgroundColor: "rgba(80,30,30,0.4)",
+                   borderColor: "rgba(80,30,30,5)",
+                   data: [],     
+                },
+                
+               ]
+          },
+      
+          options: {
+ 		   tooltips: {
+         		   mode : 'label'
+    			   },
+                   legend: {
+                            display: true,
+                            position: 'top',
+                   labels: {
+                            fontColor: "#000080",
+                           }
+                          },
+          scales: {
+                   xAxis: [{
+                            type: 'time',
+                    time: {
+                            unit: 'day',
+		
+                           }                 
+                          }],
+      
+                  yAxes: [{
+                            id: 'A',
+                            type: 'linear',
+                            position: 'left',
+                  ticks: {
+                            beginAtZero: true
+                         }
+                       }]
+              }
+          }
+     });
+}
+
+</script>
+
+
+<script>
+    $( function(myChart) {
+          var totalrecord =datearr.length;
+          //console.log(totalrecord);
+          var recordtobeploted=1;
+          var step=100/((totalrecord-recordtobeploted)/recordtobeploted);
+          $( "#slider" ).slider({
+             slide: function(event, ui) {
+             startvalue=(Math.round(ui.value/step)*recordtobeploted);
+             endvalue=startvalue+100;
+             updateslide();
+      }
+      
+    });
+});
+
+function updateslide()
+{
+ myChart3.config.data.datasets[0].data=total_energy_export.slice(startvalue,endvalue);
+ myChart3.config.data.labels=datearr.slice(startvalue,endvalue);
+ myChart3.config.data.datasets[1].data=total_energy_import.slice(startvalue,endvalue);
+
+
+ window.myChart3.update();
+}
+</script>
+<script>
+$(document).ready(function(){
+$("#myChart3").click(function(){
+    window.location = "/energy_graph?";
+});
+});
+</script>
+</div>
+
+
+
+<div class="row">
+  <div class="column4"  >
+<b>Grid Report</b>
+    <div class="griddatapane1">
+<table id="table_id2" class="display nowrap" border="1" width="10%" >
+<thead>
+<tr>
+
+<th>Updated Date </th>
+<th>Updated Time </th>
+<th>Battery Voltage</th>
+<th>Battery Current</th>
+<th>R_PHASE I/P Voltage</th>
+<th>Y_PHASE I/P Voltage</th>
+<th>B_PHASE I/P Voltage </th>
+<th>I/P Power</th>
+<th>I/P Frequency</th>
+<th>Power Factor</th>
+<th>Today's Energy Exported</th>
+<th>Today's Energy Imported</th>
+<th>Total Energy Exported</th>
+<th>Total Energy Exported</th>
+</tr>
+</thead>
+<% @grid_report_details.each do |val| %>
+<tr>
+<td ><%= "#{val['updated_date']}" %></td>
+<td><%= "#{val['updated_time'].strftime("%H:%M:%S")}" %></td>
+<td><%= "#{val['batter_voltage']}" %></td>
+<td><%= "#{val['battery_current']}" %></td>
+<td><%= "#{val['grid_input_vol_r_ph']}" %></td>
+<td><%= "#{val['grid_input_vol_y_ph']}" %></td>
+<td><%= "#{val['grid_input_vol_b_ph']}" %></td>
+<td><%= "#{val['grid_input_power']}" %></td>
+<td><%= "#{val['grid_input_frequency']}" %></td>
+<td><%= "#{val['grid_powerfactor']}" %></td>
+<td><%= "#{val['todays_energy_export']}" %></td>
+<td><%= "#{val['todays_energy_import']}" %></td>
+<td><%= "#{val['total_energy_export']}" %></td>
+<td><%= "#{val['total_energy_import']}" %></td>
+<!--<td><a href="/reports?ctrlr_id=<%= "#{val['ctrlrid']}" %>" class="w3-bar-item w3-button w3-padding"><i class="fa fa-table tblcheck"></i>  </a></td>-->
+</tr>
+<% end %>
+</table>
+</div>
+<script type="text/javascript">
+  
+        $('#table_id2').DataTable(
+
+{
+	"sScrollY": ($(window).height() - 500),
+        "scrollX": true,
+	"scrollY": true,
+ 
+}
+
+);  
+</script>
+<script>
+$(document).ready(function(){
+$("#table_id2").click(function(){
+    window.location = "/grid_report?";
+});
+});
+</script>
+  </div>
+
+
+
+
+  <div class="column5" >
+<b>DG Report</b>
+    <div class="dgdatapane1">
+<table id="table_id3" class="display nowrap" border="1" width="10%" >
+<thead>
+<tr>
+
+<th>Updated Date </th>
+<th>Updated Time </th>
+<th>Battery Voltage</th>
+<th>Battery Current</th>
+<th>Output Power</th>
+<th>Output Current</th>
+<th>Load Power Factor</th>
+<th>Today's AC Load Energy</th>
+<th>Total AC Load Energy</th>
+<th>Today's DG O/P Energy Produced</th>
+<th>total DG O/P Energy Produced</th>
+<th>Today's External DC Energy</th>
+<th>Total External DC Energy</th>
+
+</tr>
+</thead>
+<% @dg_report_details.each do |val| %>
+<tr>
+<td ><%= "#{val['updated_date']}" %></td>
+<td><%= "#{val['updated_time'].strftime("%H:%M:%S")}" %></td>
+<td><%= "#{val['batter_voltage']}" %></td>
+<td><%= "#{val['battery_current']}" %></td>
+<td><%= "#{val['output_power']}" %></td>
+<td><%= "#{val['output_current']}" %></td>
+<td><%= "#{val['load_power_factor']}" %></td>
+<td><%= "#{val['todays_ac_load_energy']}" %></td>
+<td><%= "#{val['total_ac_load_energy']}" %></td>
+<td><%= "#{val['todays_DG_output_enery_produced']}" %></td>
+<td><%= "#{val['total_DG_output_energy_produced']}" %></td>
+<td><%= "#{val['todays_external_DC_energy']}" %></td>
+<td><%= "#{val['total_external_DC_energy']}" %></td>
+
+<!--<td><a href="/reports?ctrlr_id=<%= "#{val['ctrlrid']}" %>" class="w3-bar-item w3-button w3-padding"><i class="fa fa-table tblcheck"></i>  </a></td>-->
+</tr>
+<% end %>
+</table>
+</div>
+<script type="text/javascript">
+  
+        $('#table_id3').DataTable(
+
+{
+	"sScrollY": ($(window).height() - 500),
+        "scrollX": true,
+	"scrollY": true,
+ 
+}
+
+);  
+</script>
+<script>
+$(document).ready(function(){
+$("#table_id3").click(function(){
+    window.location = "/dg_ac_dc_report?";
+});
+});
+</script>
+  </div>
+
+
+  <div class="column6" >
+    <div class="heading1">
+<b style="margin-left:1%">Solar Energy</b>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;margin-left:10%;" id="myButton1d">1D</a></button>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton1w">1W</button>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton1m">1M</button>
+<!--<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton6m">6M</button>
+<button style="width:20px;height:20px;font-size:9px;text-align: center;font-weight: bold;padding-left:0.5px;padding-right:5%;padding-bottom:4%;" id="myButton1y">1Y</button>-->
+</div>
+<div id="canvas-holder">
+<canvas id="myChart2"  width="200" height="180" ></canvas>
+</div>	
+<div class="sliderpane1">
+<div id="slider1" ></div>
+</div>
+    
+  </div>
+<script>
+
+var curentpage=1;
+var graphtimear;
+var graphdate;
+
+var ctx ;
+var myChart2 ;
+$(function(){
+      
+     
+      drawgraph1();
+      initializegraphdata1();
+      
+      window.myChart2.update();
+      
+});
+function initializegraphdata1()
+{
+      myChart2.config.data.datasets[0].data=total_energy_export.slice(curentpage,curentpage+100);
+      myChart2.config.data.labels=datearr.slice(curentpage,curentpage+100);
+      myChart2.config.data.datasets[1].data=total_energy_import.slice(curentpage,curentpage+100);
+         myChart2.config.data.datasets[2].data=todays_ac_load_energy.slice(curentpage,curentpage+100);
+myChart2.config.data.datasets[3].data=todays_DG_output_enery_produced.slice(curentpage,curentpage+100);
+myChart2.config.data.datasets[4].data=todays_kwh.slice(curentpage,curentpage+100);
+      window.myChart2.update();
+
+}
+function updategraph1()
+{
+      
+      myChart2.config.data.datasets[0].data=total_energy_export.slice(curentpage,curentpage+100);
+      myChart2.config.data.labels=datearr.slice(curentpage,curentpage+100);
+      myChart2.config.data.datasets[1].data=total_energy_import.slice(curentpage,curentpage+100);
+            myChart2.config.data.datasets[2].data=todays_ac_load_energy.slice(curentpage,curentpage+100);
+myChart2.config.data.datasets[3].data=todays_DG_output_enery_produced.slice(curentpage,curentpage+100);
+myChart2.config.data.datasets[4].data=todays_kwh.slice(curentpage,curentpage+100);
+      window.myChart2.update();
+}
+
+var total_energy_export=<%= raw(@total_energy_export) %>;
+var timearr=<%= raw(@timearray) %>;
+var datearr=<%= raw(@datearray) %>;
+var total_energy_import=<%= raw(@total_energy_import) %>;
+
+var todays_ac_load_energy=<%= raw(@todays_ac_load_energy) %>;
+var todays_DG_output_enery_produced=<%= raw(@todays_DG_output_enery_produced) %>;
+var todays_kwh=<%= raw(@todays_kwh) %>;
+
+
+function drawgraph1(){
+       ctx = document.getElementById("myChart2").getContext('2d');
+       myChart2 = new Chart(ctx, {
+          type: 'line',
+          zoomType: 'x',
+
+          data: {
+                  labels: [], 
+                   datasets: [{
+                   label: 'Export',
+                   yAxisID: 'A',
+                   fill: false,
+                   backgroundColor: "rgba(75,192,192,0.4)",
+                   borderColor: "rgba(75,192,192,5)",
+                   data: [],
+                },
+                {
+                   label: 'Import',
+                   yAxisID: 'A',
+                   fill: false,
+                   lineTension: 0.3,
+                   backgroundColor: "rgba(80,30,30,0.4)",
+                   borderColor: "rgba(80,30,30,5)",
+                   data: [],     
+                },
+                {
+                   label: 'AC Energy',
+                   yAxisID: 'A',
+                   fill: false,
+                   lineTension: 0.3,
+                   backgroundColor: "rgba(10,60,30,0.4)",
+                   borderColor: "rgba(10,60,30,5)",
+                   data: [],     
+                },
+ {
+                   label: 'DG Enery',
+                   yAxisID: 'A',
+                   fill: false,
+                   lineTension: 0.3,
+                   backgroundColor: "rgba(10,120,90,0.4)",
+                   borderColor: "rgba(10,120,90,5)",
+                   data: [],     
+                },
+ {
+                   label: 'Pv KWH',
+                   yAxisID: 'A',
+                   fill: false,
+                   lineTension: 0.3,
+                   backgroundColor: "rgba(190,60,30,0.4)",
+                   borderColor: "rgba(190,60,30,5)",
+                   data: [],     
+                },
+               ]
+          },
+      
+          options: {
+ 		   tooltips: {
+         		   mode : 'label'
+    			   },
+                   legend: {
+                            display: true,
+                            position: 'top',
+                   labels: {
+                            fontColor: "#000080",
+                           }
+                          },
+          scales: {
+                   xAxis: [{
+                            type: 'time',
+                    time: {
+                            unit: 'day',
+		
+                           }                 
+                          }],
+      
+                  yAxes: [{
+                            id: 'A',
+                            type: 'linear',
+                            position: 'left',
+                  ticks: {
+                            beginAtZero: true
+                         }
+                       }]
+              }
+          }
+     });
+}
+
+</script>
+
+
+<script>
+    $( function() {
+          var totalrecord =datearr.length;
+          //console.log(totalrecord);
+          var recordtobeploted=1;
+          var step=100/((totalrecord-recordtobeploted)/recordtobeploted);
+          $( "#slider1" ).slider({
+             slide: function(event, ui) {
+             startvalue=(Math.round(ui.value/step)*recordtobeploted);
+             endvalue=startvalue+100;
+             updateslide1();
+      }
+      
+    });
+});
+
+function updateslide1()
+{
+ myChart2.config.data.datasets[0].data=total_energy_export.slice(startvalue,endvalue);
+ myChart2.config.data.labels=datearr.slice(startvalue,endvalue);
+ myChart2.config.data.datasets[1].data=total_energy_import.slice(startvalue,endvalue);
+myChart2.config.data.datasets[2].data=todays_ac_load_energy.slice(startvalue,endvalue);
+myChart2.config.data.datasets[3].data=todays_DG_output_enery_produced.slice(startvalue,endvalue);
+myChart2.config.data.datasets[4].data=todays_kwh.slice(startvalue,endvalue);
+
+ window.myChart2.update();
+}
+</script>
+<script>
+$(document).ready(function(){
+$("#myChart2").click(function(){
+    window.location = "/solar_inv_graph?";
+});
+});
+</script>
+  
+  </div>
+</div>
+</body>
+</html>

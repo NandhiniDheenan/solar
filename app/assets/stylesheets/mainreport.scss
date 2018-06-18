@@ -1,0 +1,98 @@
+// Place all the styles related to the mainreport controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "jquery.dataTables.min.css";
+@import "buttons.dataTables.min.css";
+@import 'jquery-ui/datepicker.css';
+
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+
+.column1 {
+    float: left;
+    width: 28%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    margin-left:20%;
+border:1px solid black;
+}
+.column2 {
+    float: left;
+    width:28%;
+    padding: 10px;
+    height: 300px;
+    margin-left:2%; /* Should be removed. Only for demonstration */
+border:1px solid black;
+}
+.column3 {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    height: 300px; 
+    margin-left:2%;
+border:1px solid black;
+}
+.column4 {
+    float: left;
+    width: 28%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    margin-left:20%;
+    margin-top:2%;
+border:1px solid black;
+}
+.column5 {
+    float: left;
+    width:28%;
+    padding: 10px;
+    height: 300px;
+    margin-left:2%; /* Should be removed. Only for demonstration */
+    margin-top:2%;
+border:1px solid black;
+}
+.column6 {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    height: 300px; 
+    margin-left:2%;
+    margin-top:2%;
+border:1px solid black;
+}
+
+.pvdatapane1
+{
+font-size: 8px;
+}
+.invdatapane1
+{
+font-size: 8px;
+}
+.griddatapane1
+{
+font-size: 8px;
+}
+.dgdatapane1
+{
+font-size: 8px;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+
+.heading
+{
+ padding-top: 1%;
+ padding-left: 0%;
+font-size: 100%;
+}

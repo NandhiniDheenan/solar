@@ -1,0 +1,23 @@
+// Place all the styles related to the editcontroller controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "jquery.dataTables.min.css";
+@import "buttons.dataTables.min.css";
+.editdbdatapane
+{
+
+
+font-size: 13px;
+float: left;
+margin-left:35%;
+padding-top: 2%;
+margin-bottom:10%;
+
+}
+.editheading
+{
+font-size: 20px;
+margin-top:3%;
+margin-left: 50%;
+font-weight: bold;
+}

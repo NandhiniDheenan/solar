@@ -1,0 +1,165 @@
+<html>
+<head>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body style="background: linear-gradient(to bottom, #99ccff 0%, #ccffff 100%);">
+
+<div class="profile_edit_subform_tbl_head"  >
+
+<form action="/editprofilesubformpost?profileid=<%= @profileid %>" id="editprofilesubform">  
+
+<div class="profile_edit_subform_tbl_head" style="margin-top:2%">
+<table style="width:80%;font-size:12px" border="1" cellpadding="2%" cellspacing="1" >
+  <tr>
+    <th colspan="8" align="center" style="font-size:16px">Edit Profile Details</th>
+    </tr>
+<tr>
+<td colspan="8" align="center" style="font-size:12px" > <b><i>Editing Profile details for Profile ID: <%= @profileid %></i><b></td>
+</tr>
+ <tr>
+    <td><label class="leftsubform" for="slave">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode1">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr1">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length1">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+  
+    <tr>
+    <td><label class="leftsubform" for="slave">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode2">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr2">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length2">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slave">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode3">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr3">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length3">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode4">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr4">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length4">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode5">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr5">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length5">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode6">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr6">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length6">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode7">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr7">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length7">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode8">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr8">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length8">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode9">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr9">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length9">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode10">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr10">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length10">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode11">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr11">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length11">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode12">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr12">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length12">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+    <td><label class="leftsubform" for="slaveid">Slave ID</label></td>
+    <td><input  class="rightsubform" type="text" name="[slave_id][]" size="6" ></td>
+ <td><label class="leftsubform" for="functioncode13">Function Code</label></td>
+    <td><input  class="rightsubform" type="text"  name="[functioncode][]" size="6" ></td>
+ <td><label class="leftsubform" for="startingaddr13">Starting Address</label></td>
+    <td><input  class="rightsubform" type="text"  name="[startingaddr][]" size="6" ></td>
+ <td><label class="leftsubform" for="length13">Length</label></td>
+    <td><input  class="rightsubform" type="text"  name="[length][]" size="6" ></td>
+  </tr>  
+<tr>
+<td colspan="8" align="center"><button type="submit" class="signupbtn">Submit</button>
+<button type="button" class="resetbtn">Reset</button></td>
+    </tr>
+ <tr>
+</table>
+
+    
+  </div> 
+</form>
+<script>
+$('.resetbtn').click(function() { $('#editprofilesubform')[0].reset() })
+</script>
+</body>
+</html>

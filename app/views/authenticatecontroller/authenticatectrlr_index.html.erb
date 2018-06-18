@@ -1,0 +1,45 @@
+<html>
+<head>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body style="background: linear-gradient(to bottom, #99ccff 0%, #ccffff 100%);">
+
+<div class="customerhead1">
+
+<form action="/authenticatectrlridpost" id="authenticationform">  
+
+<div class="tblhead">
+<table style="width:60%" border="1" cellpadding="5%" cellspacing="1">
+  <tr>
+    <th colspan="2" align="center">Authentication Controller</th>
+    </tr>
+  <tr>
+    <td><label class="left"for="ctrlrid">Controller ID</label></td>
+    <td><select  class="right" id="firstDropdown" name="ctrlrid">
+  <option value="0">Select Controller</option>
+<%= options_for_select(@ctrlrid) %>
+</select></td>
+  </tr>
+
+   <tr>
+    <td><label class="left" for="authorizationcode">Authorization Code</label></td>
+    <td><input  class="right" type="text" placeholder="Enter Authorization Code" name="authorizationcode" required></td>
+  </tr>
+
+    
+<tr>
+<td colspan="2" align="center"><button type="submit" class="signupbtn">Submit</button>
+<button type="button" class="resetbtn">Reset</button></td>
+    </tr>
+ <tr>
+</table>
+
+    
+  </div> 
+</form>
+<script>
+$('.resetbtn').click(function() { $('#authenticationform')[0].reset() })
+</script>
+</body>
+</html>

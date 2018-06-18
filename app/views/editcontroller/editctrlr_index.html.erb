@@ -1,0 +1,40 @@
+<html>
+<body style="background: linear-gradient(to bottom, #99ccff 0%, #ccffff 100%);">
+<%= stylesheet_link_tag 'application' %>
+<%= javascript_include_tag  "application" %>
+
+<div class="editheading">
+Edit Controller
+</div>
+
+<div class="editdbdatapane">
+<table id="table_id" class="display nowrap"  border="2" cellpadding="2%" cellspacing="1" >
+<thead>
+<tr>
+<th>controller ID </th>
+<th>Profile ID </th>
+<th>Site Name </th>
+<th>Location </th>
+<th>Action </th>
+
+</tr>
+</thead>
+<% @edit_ctrlr_details.each do |val| %>
+<tr>
+<td><%= "#{val['controller_id']}" %></td>
+<td ><%= "#{val['profile_id']}" %></td>
+<td ><%= "#{val['site_name']}" %></td>
+<td ><%= "#{val['location']}" %></td>
+<td><a href="/updatecontroller?controller_id= <%= "#{val['controller_id']}" %>" class="w3-bar-item w3-button w3-padding"><i class="fa fa-edit"></i>  </a></td>
+</tr>
+<% end %>
+</table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').dataTable();
+    });
+</script>
+</body>
+</html>

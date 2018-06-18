@@ -1,0 +1,49 @@
+<html>
+<head>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body style="background: linear-gradient(to bottom, #99ccff 0%, #ccffff 100%);">
+
+<div class="customerhead1">
+
+<form action="/updatecontroller1" id="controllerform" >  
+
+<div class="tblhead">
+<table style="width:60%" border="1" cellpadding="5%" cellspacing="1">
+  <tr>
+    <th colspan="2" align="center">Update Controller</th>
+    </tr>
+  <tr>
+    <td><label class="left"for="controller_id">Controller ID</label></td>
+    <td><input  class="right" type="text" placeholder="Enter Controller ID" name="controller_id" value="<%= @controller_id %>" disabled></td>
+  </tr>
+   <tr>
+    <td><label class="left" for="profileid">Profile ID</label></td>
+
+    <td><input  class="right" type="text" placeholder="Enter Profile  ID" value="<%= @profileid %>" name="profileid" required></td>
+  </tr>
+ <tr>
+    <td><label class="left"for="sitename">Site Name</label></td>
+    <td><input  class="right" type="text" placeholder="Enter Site Name" value="<%= @site_name %>"name="sitename" required></td>
+  </tr>
+ <tr>
+    <td><label class="left"for="location">Location</label></td>
+    <td><input  class="right" type="text" placeholder="Enter Location" value="<%= @location %>" name="location" required></td>
+  </tr>
+    
+<tr>
+<td colspan="2" align="center"><button type="submit" class="signupbtn">Save</button>
+<button type="button" class="resetbtn">Reset</button></td>
+    </tr>
+ <tr>
+</table>
+
+    
+  </div> 
+</form>
+<script>
+$('.resetbtn').click(function() { $('#controllerform')[0].reset() })
+</script>
+</body>
+</html>
